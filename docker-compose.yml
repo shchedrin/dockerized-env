@@ -47,5 +47,12 @@ services:
         - 8080:8080
     links:
       - db
+
+  pgadmin:
+    image: chorss/docker-pgadmin4
+    volumes:
+      - ./data/pgadmin:/data
+    ports:
+      - "5050:5050"
 volumes:
   postgres_data:
