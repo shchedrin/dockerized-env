@@ -29,6 +29,15 @@ services:
       - ./app:/var/www:rw
     restart: always
 
+  php-cli:
+    build:
+      context: ./containers/cli
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/var/www:rw
+    environment:
+      XDEBUG_CONFIG: remote_host=192.168.32.126
+
   # with docker-compose, it tries to preserve volumes between runs; since the user is only created on a new database, you probably need to docker-compose rm -v database to delete the container and associated volume.
   db:
     image: postgres
@@ -54,5 +63,7 @@ services:
       - ./data/pgadmin:/data
     ports:
       - "5050:5050"
+    links:
+      - db
 volumes:
   postgres_data:
