@@ -8,6 +8,7 @@ RUN apt-get update -yqq \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install pdo_sqlite
 
+#Path to Composer autoload.php - /root/.composer/vendor/autoloader.php
 RUN curl -fsSL https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
     && composer global require phpunit/phpunit ^6.2 --no-progress --no-scripts --no-interaction
@@ -19,4 +20,4 @@ RUN yes | pecl install xdebug \
 
 ENV PATH /root/.composer/vendor/bin:$PATH
 WORKDIR /var/www/
-CMD ["phpunit"]
+CMD ["php -v"]

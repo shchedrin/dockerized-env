@@ -36,7 +36,7 @@ services:
     volumes:
       - ./app:/var/www:rw
     environment:
-      XDEBUG_CONFIG: remote_host=192.168.32.126
+      XDEBUG_CONFIG: remote_host=192.168.32.126 #ip address of host-machine
 
   # with docker-compose, it tries to preserve volumes between runs; since the user is only created on a new database, you probably need to docker-compose rm -v database to delete the container and associated volume.
   db:
