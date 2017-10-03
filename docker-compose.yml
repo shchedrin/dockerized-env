@@ -16,25 +16,18 @@ services:
         - ./app:/var/www
         - ./logs/nginx:/var/log/nginx
     links:
-      - fpm
+      - php
     command: /bin/bash -c "nginx -g 'daemon off;'"
     restart: always
 
-  fpm:
+  php:
     # путь до докер файла указываем относительно директории в build
     build:
-      context: ./containers/fpm
+      context: containers/php
       dockerfile: Dockerfile
     volumes:
       - ./app:/var/www:rw
     restart: always
-
-  php-cli:
-    build:
-      context: ./containers/cli
-      dockerfile: Dockerfile
-    volumes:
-      - ./app:/var/www:rw
     environment:
       XDEBUG_CONFIG: remote_host=192.168.32.126 #ip address of host-machine
 
@@ -48,6 +41,7 @@ services:
       POSTGRES_PASSWORD: example
     ports:
       - "5432:5432"
+    restart: always
 
   adminer:
     image: adminer
