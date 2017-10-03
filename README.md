@@ -5,5 +5,14 @@
 * [PostgreSQL](https://www.postgresql.org/)
 * [PHP 7](http://php.net/)
 
-##Examples
-docker exec -t -i <php-cli container name> composer 
+##Installation
+Clone the repository.
+Change directory into the cloned project.
+Run the following command.
+```sh
+$ docker-compose up -d
+```
+###Composer
+```sh
+$ docker exec -it <php container name> composer
+```

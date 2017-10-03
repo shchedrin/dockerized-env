@@ -27,6 +27,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./app:/var/www:rw
+      - ./containers/php/config/php.ini:/usr/local/etc/php/conf.d/999-custom.ini
     restart: always
     environment:
       XDEBUG_CONFIG: remote_host=192.168.32.126 #ip address of host-machine
