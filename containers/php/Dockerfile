@@ -1,5 +1,5 @@
 # Для начала указываем исходный образ, он будет использован как основа
-FROM php:7.1-fpm
+FROM php:7.2.6-fpm
 MAINTAINER shchedrin <ilya.shchedrin@gmail.com>
 
 # RUN выполняет идущую за ней команду в контексте нашего образа.
